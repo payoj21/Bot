@@ -1,5 +1,6 @@
 package com.surgeon.eye.services.impl;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -60,5 +61,10 @@ public class DoctorServiceImpl {
 
 
 		return doctor;
+	}
+	
+	public List<Doctor> getDoctors(String speciality){
+	return	doctorRepository.findBySpeciality(speciality);
+		
 	}
 }
