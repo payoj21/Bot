@@ -43,7 +43,7 @@ public class DoctorServiceImpl {
 					doctor= doctorRepository.save(doctor);
 				}
 				else {
-					// 15 mins. record id. offie hours check. 
+					// 15 mins. record id. office hours check. 
 					doctor.getAppointments().stream().forEach(appointment->{
 						if(appointment.getDate().equals(appointmentDetails.getDate())) {
 							throw new RuntimeException("Slot unavailable");
