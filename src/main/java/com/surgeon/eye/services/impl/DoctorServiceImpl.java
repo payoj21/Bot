@@ -1,5 +1,6 @@
 package com.surgeon.eye.services.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,7 +40,9 @@ public class DoctorServiceImpl {
 					throw new RuntimeException("No patient found");
 
 				if(CollectionUtils.isEmpty(doctor.getAppointments())) {
-					appointmentDetails.setRecordId(UUID.randomUUID().toString().replaceAll("", "-"));
+					String s = UUID.randomUUID().toString().replaceAll("-", "");
+					String uuid = s.substring(0, Math.min(s.length(), 5));
+					appointmentDetails.setRecordId(uuid);
 					doctor.getAppointments().add(appointmentDetails);
 					doctor= doctorRepository.save(doctor);
 				}
@@ -50,9 +53,23 @@ public class DoctorServiceImpl {
 							throw new RuntimeException("Slot unavailable");
 						}
 					});
-					appointmentDetails.setRecordId(UUID.randomUUID().toString().replaceAll("", "-"));
+					String s = UUID.randomUUID().toString().replaceAll("-", "");
+					String uuid = s.substring(0, Math.min(s.length(), 5));
+					appointmentDetails.setRecordId(uuid);
 					doctor.getAppointments().add(appointmentDetails);
 					doctor= doctorRepository.save(doctor);
+//					List <DoctorAppointmentDetails> app = doctor.getAppointments();
+//					for(int i = 0;i< app.size(); i++) {
+//						String id = app.get(i).getRecordId();
+//						
+//						if (id == uuid) {
+//							new Date("<YYYY-mm-ddTHH:MM:ss>") date =  app.get(i).getDate();
+//						}
+//					}
+//					
+					
+					
+					
 				}
 			}
 		}
