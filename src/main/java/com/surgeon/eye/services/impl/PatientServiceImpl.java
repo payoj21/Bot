@@ -32,7 +32,9 @@ public class PatientServiceImpl {
 			patient=patientRepository.findOne(patientId);
 			if(null==patient)
 				throw new RuntimeException("No such registered patient with us");
-			List<Prescription> prescriptionList= new ArrayList<>();
+			List<Prescription> prescriptionList=patient.getPrescriptions();
+			if(prescriptionList==null)
+				prescriptionList=new ArrayList<>();
 			prescriptionList.add(prescription);
 			patient.setPrescriptions(prescriptionList);
 			
