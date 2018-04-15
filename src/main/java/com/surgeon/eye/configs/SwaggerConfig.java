@@ -20,7 +20,8 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select().apis(RequestHandlerSelectors.any())
 				.paths(Predicates.or(PathSelectors.regex("/user.*"),
-						PathSelectors.regex("/doctor.*")))
+						PathSelectors.regex("/doctor.*"),
+						PathSelectors.regex("/patient.*")))
 						.build();
 		
 		

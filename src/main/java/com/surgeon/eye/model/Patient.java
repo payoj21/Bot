@@ -1,5 +1,7 @@
 package com.surgeon.eye.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,6 +18,7 @@ public class Patient {
 	private String email;
 	private int age;
 	private String gender;
+	private List<Prescription> prescriptions;
 	
 
 }
