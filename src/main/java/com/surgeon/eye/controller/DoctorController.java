@@ -1,5 +1,7 @@
 package com.surgeon.eye.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +27,9 @@ public class DoctorController {
 			return doctor;
 		}
 	
-
+	@RequestMapping(value="/details", method=RequestMethod.GET)
+	public List <Doctor> getDoctors(@RequestParam("specialisation") String speciality) {
+		List<Doctor> doctorList =doctorServiceImpl.getDoctors(speciality);
+			return doctorList;
+		}
 }
