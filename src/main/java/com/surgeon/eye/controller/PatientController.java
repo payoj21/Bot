@@ -1,5 +1,9 @@
 package com.surgeon.eye.controller;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +23,17 @@ public class PatientController {
 	PatientServiceImpl patientServiceImpl;
 
 	@RequestMapping(value="/saveprescription", method=RequestMethod.POST)
-	public Patient bookAppointment(@RequestBody Prescription prescription,
+	public Patient savePrescription(@RequestBody Prescription prescription,
 			@RequestParam("patientId") String patientId) {
 		Patient patient =patientServiceImpl.savePrescription(prescription, patientId);
 			return patient;
 		}
+	
+	@RequestMapping(value="/getprescription", method=RequestMethod.GET)
+	public List<Prescription> getPrescription(
+			@RequestParam("patientId") String patientId) {
+		List<Prescription> prescription =patientServiceImpl.getPrescription( patientId);
+		
+			return prescription;
+	}
 }
